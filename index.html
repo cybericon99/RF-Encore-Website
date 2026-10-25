@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GuildCore — RF Online NEXT Guild Tracker</title>
+<style>
+:root{--bg:#080d16;--panel:#101927;--panel2:#131f30;--line:#25344a;--text:#edf4ff;--muted:#8da1bb;--cyan:#4de4f5;--blue:#5797ff;--green:#5ce0a0;--amber:#ffc66d;--red:#ff7185}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#18304d 0,transparent 38%),var(--bg);color:var(--text);font:14px/1.5 Inter,Segoe UI,Arial,sans-serif}
+button,input,select{font:inherit}button{cursor:pointer}.app{max-width:1440px;margin:auto;padding:26px 28px 48px}.topbar{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:28px}.brand{display:flex;align-items:center;gap:13px}.logo{width:44px;height:44px;display:grid;place-items:center;border:1px solid #3c8298;background:linear-gradient(135deg,#183b50,#101b2b);color:var(--cyan);font-weight:900;font-size:20px;clip-path:polygon(25% 0,75% 0,100% 25%,100% 75%,75% 100%,25% 100%,0 75%,0 25%)}h1,h2,h3,p{margin:0}.brand h1{font-size:20px;letter-spacing:.11em}.brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:.15em;text-transform:uppercase}.top-actions{display:flex;gap:9px;flex-wrap:wrap}.btn{border:1px solid var(--line);border-radius:8px;background:#172437;color:var(--text);padding:10px 13px;font-weight:650}.btn:hover{border-color:#4e779e;background:#1a2d44}.btn.primary{background:linear-gradient(135deg,#1b91a5,#2461a5);border-color:#3aaec5}.btn.danger{color:#ff9aa9}.hero{display:flex;justify-content:space-between;align-items:end;gap:20px;margin:10px 0 23px}.eyebrow{color:var(--cyan);font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase}.hero h2{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:7px 0}.hero p{color:var(--muted);max-width:650px}.guild-label{border:1px solid #2c536d;background:#0e1d2b;border-radius:10px;padding:12px 15px;min-width:190px}.guild-label span{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.12em}.guild-label strong{display:block;margin-top:3px;font-size:16px;color:var(--cyan)}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin-bottom:20px}.stat{background:linear-gradient(145deg,#111d2d,#0e1724);border:1px solid var(--line);border-radius:12px;padding:17px 18px;position:relative;overflow:hidden}.stat:after{content:"";position:absolute;right:-20px;top:-24px;width:90px;height:90px;border-radius:50%;border:1px solid #263e58;box-shadow:0 0 0 12px #17273a55,0 0 0 25px #17273a33}.stat .label{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.12em}.stat .value{font-size:27px;font-weight:800;letter-spacing:-.04em;margin-top:4px}.stat .hint{color:#7e94ad;font-size:11px;margin-top:2px}.stat.cyan .value{color:var(--cyan)}.stat.blue .value{color:#8cb5ff}.stat.green .value{color:var(--green)}.layout{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:17px;align-items:start}.panel{border:1px solid var(--line);background:linear-gradient(155deg,#111b2a,#0d1521);border-radius:13px;overflow:hidden}.panel-head{padding:17px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px}.panel-head h3{font-size:15px}.sub{color:var(--muted);font-size:12px;margin-top:3px}.panel-body{padding:17px 18px}.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:14px}.search{flex:1;min-width:180px}.field{width:100%;border:1px solid #2a3b51;background:#0a1320;color:var(--text);border-radius:8px;padding:10px 11px;outline:none}.field:focus{border-color:#42c4d7;box-shadow:0 0 0 2px #42c4d71a}.toolbar select{width:auto;min-width:135px}.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:720px}th{text-align:left;color:#8298b2;font-size:10px;text-transform:uppercase;letter-spacing:.13em;font-weight:800;background:#0d1724;padding:12px 13px;border-bottom:1px solid var(--line)}td{padding:13px;border-bottom:1px solid #1d2b3e;vertical-align:middle}tbody tr:hover{background:#15233777}tbody tr:last-child td{border-bottom:0}.player{display:flex;align-items:center;gap:10px}.avatar{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:#172d42;border:1px solid #2d4d68;color:var(--cyan);font-size:12px;font-weight:900}.player-name{font-weight:750}.player-meta{color:var(--muted);font-size:11px}.power{font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}.class-pill,.faction-pill{display:inline-flex;padding:4px 8px;border-radius:6px;font-size:11px;font-weight:700;white-space:nowrap}.class-pill{color:#b9d4ff;background:#1b2d48;border:1px solid #2b4567}.faction-pill{color:#a4e9e1;background:#12312f;border:1px solid #245d58}.row-actions{display:flex;gap:5px}.icon-btn{background:transparent;border:1px solid transparent;border-radius:6px;color:#8da5c0;padding:5px 7px}.icon-btn:hover{border-color:#38516c;background:#1a2a3d;color:#fff}.empty{text-align:center;padding:40px 15px;color:var(--muted)}.empty strong{display:block;color:var(--text);margin-bottom:5px}.side-stack{display:grid;gap:17px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.form-group{display:grid;gap:5px}.form-group.full{grid-column:1/-1}.form-group label{color:#9db0c7;font-size:11px;font-weight:750;text-transform:uppercase;letter-spacing:.08em}.form-actions{display:flex;gap:8px;margin-top:14px}.form-actions button{flex:1}.class-list{display:grid;gap:12px}.class-row{display:grid;grid-template-columns:88px 1fr 34px;gap:9px;align-items:center;font-size:12px}.class-row .name{color:#b6c6da}.bar{height:7px;background:#1b2b3f;border-radius:20px;overflow:hidden}.bar span{height:100%;display:block;background:linear-gradient(90deg,#2779a9,var(--cyan));border-radius:20px}.class-row .count{text-align:right;color:#d9e8fa;font-variant-numeric:tabular-nums}.notice{font-size:11px;color:var(--muted);border-top:1px solid var(--line);padding:12px 18px;line-height:1.55}.footer{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;color:#6f849d;font-size:11px;margin-top:18px}.toast{position:fixed;right:22px;bottom:22px;background:#15372f;border:1px solid #347c67;color:#c9ffea;padding:12px 16px;border-radius:9px;box-shadow:0 10px 35px #0006;display:none;z-index:5}.modal-backdrop{position:fixed;inset:0;background:#03070dcc;display:none;align-items:center;justify-content:center;padding:20px;z-index:10}.modal{width:min(570px,100%);background:#101b2a;border:1px solid #314761;border-radius:14px;box-shadow:0 24px 80px #0009}.modal .panel-body{padding:20px}.modal-head{display:flex;justify-content:space-between;align-items:center;padding:17px 20px;border-bottom:1px solid var(--line)}.modal-head h3{font-size:17px}.close{font-size:22px;color:var(--muted);background:none;border:0}.file-label{display:inline-flex;align-items:center;gap:7px}.hidden{display:none!important}
+@media(max-width:1000px){.layout{grid-template-columns:1fr}.side-stack{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:650px){.app{padding:18px 12px 30px}.topbar,.hero{align-items:flex-start;flex-direction:column}.top-actions{width:100%}.top-actions .btn{flex:1}.stats{gap:8px}.stat{padding:13px}.stat .value{font-size:23px}.side-stack{grid-template-columns:1fr}.panel-head{padding:14px}.panel-body{padding:13px}.guild-label{width:100%}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand"><div class="logo">GC</div><div><h1>GUILDCORE</h1><small>RF Online NEXT · Guild Intelligence</small></div></div>
+    <div class="top-actions">
+      <button class="btn" id="exportBtn">↓ Export CSV</button>
+      <button class="btn" id="backupBtn">⇧ Backup JSON</button>
+      <label class="btn file-label">↑ Import JSON<input id="importFile" class="hidden" type="file" accept=".json,application/json"></label>
+      <button class="btn primary" id="openAddBtn">＋ Add member</button>
+    </div>
+  </header>
+  <section class="hero">
+    <div><div class="eyebrow">Guild command center</div><h2>Roster & Combat Power</h2><p>Keep your guild roster organized, track every member's IGN, class, faction, and Combat Power, and see your guild strength at a glance.</p></div>
+    <div class="guild-label"><span>Guild / Alliance name</span><strong id="guildNameDisplay">YOUR GUILD</strong></div>
+  </section>
+  <section class="stats">
+    <div class="stat cyan"><div class="label">Guild members</div><div class="value" id="memberCount">0</div><div class="hint">Tracked players</div></div>
+    <div class="stat blue"><div class="label">Total combat power</div><div class="value" id="totalPower">0</div><div class="hint">Combined roster CP</div></div>
+    <div class="stat green"><div class="label">Average combat power</div><div class="value" id="avgPower">0</div><div class="hint">Per tracked member</div></div>
+    <div class="stat"><div class="label">Top combat power</div><div class="value" id="topPower">0</div><div class="hint" id="topPlayer">No members yet</div></div>
+  </section>
+  <div class="layout">
+    <main class="panel">
+      <div class="panel-head"><div><h3>Member roster</h3><div class="sub" id="rosterSub">Manage player information and power rankings</div></div><button class="btn primary" id="openAddBtn2">＋ Add</button></div>
+      <div class="panel-body">
+        <div class="toolbar">
+          <input class="field search" id="searchInput" placeholder="Search IGN, class, or faction…" aria-label="Search members">
+          <select class="field" id="classFilter" aria-label="Filter by class"><option value="">All classes</option></select>
+          <select class="field" id="factionFilter" aria-label="Filter by faction"><option value="">All factions</option><option>Bellato</option><option>Accretia</option><option>Cora</option><option>Other</option></select>
+          <select class="field" id="sortSelect" aria-label="Sort roster"><option value="power-desc">CP: Highest first</option><option value="power-asc">CP: Lowest first</option><option value="name-asc">IGN: A–Z</option><option value="class-asc">Class: A–Z</option><option value="updated-desc">Recently updated</option></select>
+        </div>
+      </div>
+      <div class="table-wrap"><table><thead><tr><th>Player / IGN</th><th>Class</th><th>Faction</th><th>Combat Power</th><th>Actions</th></tr></thead><tbody id="rosterBody"></tbody></table></div>
+      <div class="empty" id="emptyState"><strong>No members in your roster yet</strong>Add your first guild member to start tracking Combat Power.</div>
+      <div class="notice">Your roster is saved in this browser on this device. Use <b>Backup JSON</b> to save a copy or transfer data to another device. This demo does not sync between guild officers automatically.</div>
+    </main>
+    <aside class="side-stack">
+      <section class="panel"><div class="panel-head"><div><h3>Class distribution</h3><div class="sub">Roster count by class</div></div></div><div class="panel-body"><div class="class-list" id="classDistribution"></div></div></section>
+      <section class="panel"><div class="panel-head"><div><h3>Guild settings</h3><div class="sub">Personalize your tracker</div></div></div><div class="panel-body">
+        <div class="form-group"><label for="guildNameInput">Guild name</label><input class="field" id="guildNameInput" placeholder="e.g. WeeHu"></div>
+        <div class="form-actions"><button class="btn primary" id="saveGuildBtn">Save settings</button></div>
+        <div style="height:15px"></div>
+        <div class="form-group"><label for="classCustomInput">Add custom class</label><input class="field" id="classCustomInput" placeholder="Enter class name"></div>
+        <div class="form-actions"><button class="btn" id="addClassBtn">Add class option</button></div>
+      </div></section>
+      <section class="panel"><div class="panel-head"><div><h3>Quick tips</h3><div class="sub">Keep your roster reliable</div></div></div><div class="panel-body" style="color:var(--muted);font-size:12px;display:grid;gap:9px"><div>◈ Update Combat Power after major upgrades.</div><div>◈ Use consistent IGN spelling for clean searches.</div><div>◈ Export a backup before changing devices.</div><div>◈ Sort by CP to prepare for guild events and PvP.</div></div></section>
+    </aside>
+  </div>
+  <footer class="footer"><span>GUILDCORE · Community-made roster tracker concept</span><span>Unofficial fan tool · Not affiliated with RF Online NEXT</span></footer>
+</div>
+<div class="modal-backdrop" id="memberModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal"><div class="modal-head"><h3 id="modalTitle">Add guild member</h3><button class="close" id="closeModal" aria-label="Close">×</button></div>
+    <div class="panel-body"><form id="memberForm">
+      <div class="form-grid">
+        <div class="form-group full"><label for="ignInput">In-game name (IGN) *</label><input class="field" id="ignInput" required maxlength="40" placeholder="Enter exact character name"></div>
+        <div class="form-group"><label for="classInput">Class *</label><select class="field" id="classInput" required></select></div>
+        <div class="form-group"><label for="factionInput">Faction</label><select class="field" id="factionInput"><option>Bellato</option><option>Accretia</option><option>Cora</option><option>Other</option></select></div>
+        <div class="form-group full"><label for="powerInput">Combat Power *</label><input class="field" id="powerInput" required type="number" min="0" step="1" placeholder="e.g. 283098"></div>
+        <div class="form-group full"><label for="notesInput">Notes (optional)</label><input class="field" id="notesInput" maxlength="120" placeholder="Role, activity, alt, etc."></div>
+      </div>
+      <div class="form-actions"><button type="button" class="btn" id="cancelModal">Cancel</button><button class="btn primary" type="submit" id="submitMemberBtn">Save member</button></div>
+    </form></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script>
+(() => {
+const DEFAULT_CLASSES = ["Demolisher","Sentinel","Berserker","Assassin","Ranger","Wizard","Warlock","Chanter","Cleric","Gunner","Launcher","MAU Pilot","Other"];
+const KEY = "guildcore_rfnext_v1";
+let members = [], classes = [...DEFAULT_CLASSES], guildName = "YOUR GUILD", editingId = null, toastTimer;
+const $ = id => document.getElementById(id);
+const num = n => Number(n || 0).toLocaleString("en-US");
+const uid = () => (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2);
+function toast(msg){const el=$("toast");el.textContent=msg;el.style.display="block";clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.style.display="none",2500)}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({members,classes,guildName}))}catch(e){toast("Could not save in this browser. Export a backup.")}}
+function load(){try{const d=JSON.parse(localStorage.getItem(KEY)||"{}");if(Array.isArray(d.members))members=d.members;if(Array.isArray(d.classes))classes=[...new Set([...DEFAULT_CLASSES,...d.classes])];if(typeof d.guildName==="string")guildName=d.guildName}catch(e){}}
+function escapeHtml(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function refreshClassOptions(){const classFilter=$("classFilter"), classInput=$("classInput");const oldFilter=classFilter.value, oldClass=classInput.value;classFilter.innerHTML='<option value="">All classes</option>'+classes.map(c=>`<option>${escapeHtml(c)}</option>`).join("");classInput.innerHTML='<option value="">Choose a class</option>'+classes.map(c=>`<option>${escapeHtml(c)}</option>`).join("");if(classes.includes(oldFilter))classFilter.value=oldFilter;if(classes.includes(oldClass))classInput.value=oldClass}
+function render(){
+  $("guildNameDisplay").textContent=guildName||"YOUR GUILD";$("guildNameInput").value=guildName==="YOUR GUILD"?"":guildName;
+  const total=members.reduce((s,m)=>s+Number(m.power||0),0), avg=members.length?Math.round(total/members.length):0, top=[...members].sort((a,b)=>Number(b.power)-Number(a.power))[0];
+  $("memberCount").textContent=num(members.length);$("totalPower").textContent=num(total);$("avgPower").textContent=num(avg);$("topPower").textContent=num(top?top.power:0);$("topPlayer").textContent=top?top.ign:"No members yet";
+  const query=$("searchInput").value.trim().toLowerCase(), cf=$("classFilter").value, ff=$("factionFilter").value, sort=$("sortSelect").value;
+  let list=members.filter(m=>(!query||[m.ign,m.class,m.faction,m.notes].some(x=>String(x||"").toLowerCase().includes(query)))&&(!cf||m.class===cf)&&(!ff||m.faction===ff));
+  list.sort((a,b)=>sort==="power-asc"?Number(a.power)-Number(b.power):sort==="name-asc"?a.ign.localeCompare(b.ign):sort==="class-asc"?a.class.localeCompare(b.class):sort==="updated-desc"?Number(b.updated||0)-Number(a.updated||0):Number(b.power)-Number(a.power));
+  $("rosterSub").textContent=`Showing ${list.length} of ${members.length} member${members.length===1?"":"s"}`;
+  $("rosterBody").innerHTML=list.map(m=>`<tr><td><div class="player"><div class="avatar">${escapeHtml((m.ign||"?").slice(0,2).toUpperCase())}</div><div><div class="player-name">${escapeHtml(m.ign)}</div><div class="player-meta">${m.notes?escapeHtml(m.notes):"Guild member"}</div></div></div></td><td><span class="class-pill">${escapeHtml(m.class)}</span></td><td><span class="faction-pill">${escapeHtml(m.faction||"Other")}</span></td><td class="power">${num(m.power)}</td><td><div class="row-actions"><button class="icon-btn" data-edit="${escapeHtml(m.id)}" title="Edit member" aria-label="Edit ${escapeHtml(m.ign)}">✎</button><button class="icon-btn" data-delete="${escapeHtml(m.id)}" title="Delete member" aria-label="Delete ${escapeHtml(m.ign)}">×</button></div></td></tr>`).join("");
+  $("emptyState").style.display=list.length?"none":"block";
+  const counts={};members.forEach(m=>counts[m.class]=(counts[m.class]||0)+1);
+  const entries=Object.entries(counts).sort((a,b)=>b[1]-a[1]);
+  $("classDistribution").innerHTML=entries.length?entries.map(([name,count])=>`<div class="class-row"><span class="name">${escapeHtml(name)}</span><div class="bar"><span style="width:${Math.max(5,count/members.length*100)}%"></span></div><span class="count">${count}</span></div>`).join(""):'<div class="empty" style="padding:18px 0">Add members to see class distribution.</div>';
+  save();
+}
+function openModal(id=null){editingId=id;const m=id?members.find(x=>x.id===id):null;$("memberForm").reset();$("modalTitle").textContent=m?"Edit guild member":"Add guild member";$("submitMemberBtn").textContent=m?"Update member":"Save member";refreshClassOptions();if(m){$("ignInput").value=m.ign;$("classInput").value=m.class;$("factionInput").value=m.faction||"Other";$("powerInput").value=m.power;$("notesInput").value=m.notes||""} $("memberModal").style.display="flex";setTimeout(()=>$("ignInput").focus(),50)}
+function closeModal(){$("memberModal").style.display="none";editingId=null}
+function download(name,content,type){const blob=new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+function exportCSV(){const rows=[["IGN","Class","Faction","Combat Power","Notes"],...members.map(m=>[m.ign,m.class,m.faction,m.power,m.notes||""])];const csv=rows.map(r=>r.map(v=>`"${String(v??"").replace(/"/g,'""')}"`).join(",")).join("\r\n");download("guildcore-roster.csv",csv,"text/csv;charset=utf-8");toast("CSV roster exported")}
+function backup(){download("guildcore-backup.json",JSON.stringify({version:1,exportedAt:new Date().toISOString(),guildName,classes,members},null,2),"application/json");toast("JSON backup exported")}
+function importData(file){const reader=new FileReader();reader.onload=()=>{try{const d=JSON.parse(reader.result);if(!Array.isArray(d.members))throw Error("Invalid backup");if(!confirm(`Import ${d.members.length} members? This replaces the current roster.`))return;members=d.members.map(m=>({id:m.id||uid(),ign:String(m.ign||"").trim(),class:String(m.class||"Other"),faction:String(m.faction||"Other"),power:Math.max(0,Number(m.power)||0),notes:String(m.notes||""),updated:Number(m.updated)||Date.now()})).filter(m=>m.ign);if(Array.isArray(d.classes))classes=[...new Set([...DEFAULT_CLASSES,...d.classes])];guildName=String(d.guildName||"YOUR GUILD");refreshClassOptions();render();toast("Backup imported successfully")}catch(e){alert("Could not import this file. Please choose a valid GuildCore JSON backup.")}$("importFile").value=""};reader.readAsText(file)}
+$("openAddBtn").onclick=$("openAddBtn2").onclick=()=>openModal();$("closeModal").onclick=$("cancelModal").onclick=closeModal;
+$("memberModal").addEventListener("click",e=>{if(e.target===$("memberModal"))closeModal()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
+$("memberForm").addEventListener("submit",e=>{e.preventDefault();const ign=$("ignInput").value.trim(),cls=$("classInput").value,power=Number($("powerInput").value);if(!ign||!cls||!Number.isFinite(power)||power<0)return;const duplicate=members.find(m=>m.ign.toLowerCase()===ign.toLowerCase()&&m.id!==editingId);if(duplicate){if(!confirm(`"${duplicate.ign}" already exists. Save another character with this IGN?`))return}const data={id:editingId||uid(),ign,class:cls,faction:$("factionInput").value||"Other",power:Math.floor(power),notes:$("notesInput").value.trim(),updated:Date.now()};if(editingId)members=members.map(m=>m.id===editingId?data:m);else members.push(data);closeModal();render();toast(editingId?"Member updated":"Member added")});
+$("rosterBody").addEventListener("click",e=>{const edit=e.target.closest("[data-edit]"),del=e.target.closest("[data-delete]");if(edit)openModal(edit.dataset.edit);if(del){const m=members.find(x=>x.id===del.dataset.delete);if(m&&confirm(`Delete ${m.ign} from the roster?`)){members=members.filter(x=>x.id!==m.id);render();toast("Member deleted")}}});
+["searchInput","classFilter","factionFilter","sortSelect"].forEach(id=>$(id).addEventListener(id==="searchInput"?"input":"change",render));
+$("saveGuildBtn").onclick=()=>{guildName=$("guildNameInput").value.trim()||"YOUR GUILD";render();toast("Guild settings saved")};
+$("addClassBtn").onclick=()=>{const v=$("classCustomInput").value.trim();if(!v)return;if(classes.some(c=>c.toLowerCase()===v.toLowerCase())){toast("That class already exists");return}classes.push(v);$("classCustomInput").value="";refreshClassOptions();render();toast("Class option added")};
+$("exportBtn").onclick=exportCSV;$("backupBtn").onclick=backup;$("importFile").onchange=e=>{if(e.target.files&&e.target.files[0])importData(e.target.files[0])};
+load();refreshClassOptions();render();
+})();
+</script>
+</body>
+</html>
